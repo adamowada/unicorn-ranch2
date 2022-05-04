@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+{% for unicorn in unicorns %}
+    <li>
+        {{unicorn.name}}
+    </li>
+    <li>
+        {{unicorn.color}}
+    </li>
+    <li>
+        {{unicorn.location}} 
+        <a href="{% url 'unicorn-update' unicorn.id %}" >Change Location</a>
+        
+    </li>
+    <li>
+
+    </li>
+{% empty %}
+<h3>No items in list</h3>
+{% endfor %}
+</ul>
+
+
+{% endblock %}
