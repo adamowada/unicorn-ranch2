@@ -1,6 +1,7 @@
 from django import forms
+from .models import Unicorn
 
-class InputForm(forms.Form):
-    name = forms.CharField(max_length=200)
-    color = forms.CharField(max_length=200)
-    location = forms.CharField(max_length=200)
+class InputForm(forms.ModelForm):
+    class Meta:
+        model = Unicorn
+        fields = '__all__'

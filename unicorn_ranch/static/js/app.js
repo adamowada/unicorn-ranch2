@@ -25,14 +25,19 @@ function cancelEdit(event) {
 function editLocation(event) {
   event.preventDefault();
   const serializedData = $(this).serialize();
+  const regex1 = /[^\r\n.]+=[^\r\n.]+=(\d+)/;
+  const regex2 = /[^\r\n.]+=[^\r\n.]+=[^\r\n.]+=([a-zA-Z]+)/;
+  const id = serializedData.match(regex1)[1];
+  const location = serializedData.match(regex2)[1];
+  console.log(id, location); // flag to remove
   $.ajax({
-    url: `unicorn-update/`,
+    url: `unicorn-update/${id}`,
     type: "POST",
     data: serializedData,
     dataType: "json",
     success: function (data) {
       console.log("it posted");
-      location.reload();
+      // location.reload();
     },
   });
 }
