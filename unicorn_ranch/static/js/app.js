@@ -18,8 +18,8 @@ function dropDownList(event) {
 }
 
 function cancelEdit(event) {
-  $(this).parent().hide();
-  $(this).parent().prev().show();
+  $(this).parent().parent().hide();
+  $(this).parent().parent().prev().show();
 }
 
 function editLocation(event) {
