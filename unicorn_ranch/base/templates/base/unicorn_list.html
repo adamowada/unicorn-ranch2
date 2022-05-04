@@ -13,10 +13,27 @@
     </li>
     <li>
         {{unicorn.location}} 
-        <a href="{% url 'unicorn-update' unicorn.id %}" >
-            Change Location
+
+        {% comment %}  
+        <a href="{% url 'unicorn-update' unicorn.id %}">
+            Change location
             <img src="{% static 'img/edit.png' %}" alt="Change Unicorn Location">
         </a>
+        {% endcomment %}
+
+        <img class="dropDownButton" src="{% static 'img/edit.png' %}" alt="Change Unicorn Location">
+        <form class="dropDownList" action="">
+            <label for="locations">Select Location</label>
+            <select name="locations">
+              <option value="Pasture">Pasture</option>
+              <option value="Barn">Barn</option>
+              <option value="Trails">Trails</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Edit Location">
+            <button class="cancel" type="button">Cancel</button>
+        </form>
+
     </li>
     <li>
 
