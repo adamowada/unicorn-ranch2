@@ -4,27 +4,8 @@
 
 {% block content %}
 <div class="mx-60 my-10">
-    <div class="flex flex-row flex-wrap">
+    <div class="flex flex-row flex-wrap grow shrink basis-1/4">
     {% for unicorn in unicorns %}
-        {% comment %}  
-        <img class="dropDownButton" src="{% static 'img/edit.png' %}" alt="Change Unicorn Location">
-        <form class="dropDownList" action="" method="POST">
-            {% csrf_token %}
-            {{ form }}
-            <input type="hidden" name="unicorn_id" value="{{unicorn.id}}">
-            <label for="location">Select Location</label>
-            <select name="location">
-                <option value="Pasture">Pasture</option>
-                <option value="Barn">Barn</option>
-                <option value="Trails">Trails</option>
-            </select>
-            <br>
-            <button type="submit" class="bg-blue-500">Edit Location</button>
-            <button class="cancel" type="button">Cancel</button>
-        </form>
-        {% endcomment %}
-
-
         <div class="max-w-sm mx-auto my-5 overflow-hidden rounded shadow-lg shadow-pink-200/40">
             <img class="w-full h-64 object-cover" src="https://ctl.s6img.com/society6/img/9-PyPIZG1uRM8E_Hu5kkMobEOQ0/w_700/prints/~artwork/s6-original-art-uploads/society6/uploads/misc/b393980e4607415cb84dd4f361a1c0df/~~/dabbing-unicorn997673-prints.jpg?wait=0&attempt=0" alt={{unicorn.name}} />
             <div class="flex flex-row">
