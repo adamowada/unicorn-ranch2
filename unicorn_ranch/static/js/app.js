@@ -37,7 +37,7 @@ function editLocation(event) {
     dataType: "json",
     success: function (data) {
       console.log("it posted");
-      // location.reload();
+      window.location.reload();
     },
   });
 }
