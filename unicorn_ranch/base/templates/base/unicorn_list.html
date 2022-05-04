@@ -3,48 +3,44 @@
 {% load static tailwind_tags %}
 
 {% block content %}
-<ul>
+<div class="flex flex-row flex-wrap">
 {% for unicorn in unicorns %}
-    <li>
-        {{unicorn.name}}
-    </li>
-    <li>
-        {{unicorn.color}}
-    </li>
-    <li>
-        {{unicorn.location}} 
+    {% comment %}  
+    <img class="dropDownButton" src="{% static 'img/edit.png' %}" alt="Change Unicorn Location">
+    <form class="dropDownList" action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="hidden" name="unicorn_id" value="{{unicorn.id}}">
+        <label for="location">Select Location</label>
+        <select name="location">
+            <option value="Pasture">Pasture</option>
+            <option value="Barn">Barn</option>
+            <option value="Trails">Trails</option>
+        </select>
+        <br>
+        <button type="submit" class="bg-blue-500">Edit Location</button>
+        <button class="cancel" type="button">Cancel</button>
+    </form>
+    {% endcomment %}
 
-        {% comment %}  
-        <a href="{% url 'unicorn-update' unicorn.id %}">
-            Change location
-            <img src="{% static 'img/edit.png' %}" alt="Change Unicorn Location">
-        </a>
-        {% endcomment %}
 
-        <img class="dropDownButton" src="{% static 'img/edit.png' %}" alt="Change Unicorn Location">
-        <form class="dropDownList" action="" method="POST">
-            {% csrf_token %}
-            {{ form }}
-            <input type="hidden" name="unicorn_id" value="{{unicorn.id}}">
-            <label for="location">Select Location</label>
-            <select name="location">
-              <option value="Pasture">Pasture</option>
-              <option value="Barn">Barn</option>
-              <option value="Trails">Trails</option>
-            </select>
-            <br>
-            <button type="submit">Edit Location</button>
-            <button class="cancel" type="button">Cancel</button>
-        </form>
-
-    </li>
-    <li>
-
-    </li>
-{% empty %}
-<h3>No items in list</h3>
+    <div class="max-w-sm mx-auto my-2 overflow-hidden rounded shadow-lg">
+        <img class="w-full h-60" src="https://ctl.s6img.com/society6/img/9-PyPIZG1uRM8E_Hu5kkMobEOQ0/w_700/prints/~artwork/s6-original-art-uploads/society6/uploads/misc/b393980e4607415cb84dd4f361a1c0df/~~/dabbing-unicorn997673-prints.jpg?wait=0&attempt=0" alt={{unicorn.name}} />
+        <div class="px-6 py-4">
+          <div class="mb-2 text-xl font-bold">{{unicorn.name}}</div>
+          <p class="text-base text-gray-700">{{unicorn.color}}</p>
+          <p class="text-purple-400 text-base">{{unicorn.location}}</p>
+        </div>
+        <div class="text-center">
+            <button
+              onClick=""
+              class="px-4 py-2 my-1 font-semibold text-blue-700 bg-transparent border border-blue-500 rounded hover:bg-blue-500 hover:text-white hover:border-transparent"
+            >
+              Change Location
+            </button>
+        </div>
+    </div>
 {% endfor %}
-</ul>
-
+</div>
 
 {% endblock %}
