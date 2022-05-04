@@ -22,15 +22,18 @@
         {% endcomment %}
 
         <img class="dropDownButton" src="{% static 'img/edit.png' %}" alt="Change Unicorn Location">
-        <form class="dropDownList" action="">
-            <label for="locations">Select Location</label>
-            <select name="locations">
+        <form class="dropDownList" action="" method="POST">
+            {% csrf_token %}
+            {{ form.InputForm }}
+            <input type="hidden" name="unicorn_id" value="{{unicorn.id}}">
+            <label for="location">Select Location</label>
+            <select name="location">
               <option value="Pasture">Pasture</option>
               <option value="Barn">Barn</option>
               <option value="Trails">Trails</option>
             </select>
-            <br><br>
-            <input type="submit" value="Edit Location">
+            <br>
+            <button type="submit">Edit Location</button>
             <button class="cancel" type="button">Cancel</button>
         </form>
 
