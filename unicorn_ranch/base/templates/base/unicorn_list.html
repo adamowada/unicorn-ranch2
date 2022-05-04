@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+{% load static tailwind_tags %}
 
 {% block content %}
 <ul>
@@ -11,8 +13,10 @@
     </li>
     <li>
         {{unicorn.location}} 
-        <a href="{% url 'unicorn-update' unicorn.id %}" >Change Location</a>
-        
+        <a href="{% url 'unicorn-update' unicorn.id %}" >
+            Change Location
+            <img src="{% static 'img/edit.png' %}" alt="Change Unicorn Location">
+        </a>
     </li>
     <li>
 
